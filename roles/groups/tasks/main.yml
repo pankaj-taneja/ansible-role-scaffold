@@ -1,0 +1,12 @@
+---
+# tasks file for groups
+
+- name: Manage groups
+  group:
+    name: "{{ item['name'] | default(omit) }}"
+    gid: "{{ item['git'] | default(omit) }}"
+    state: "{{ item['state'] | default(omit) }}"
+    system: "{{ item['system'] | default(omit) }}"
+  with_items:
+    - "{{ groups_list }}"
+  when: groups_list|length > 0

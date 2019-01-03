@@ -1,0 +1,19 @@
+
+- name: Check zoneinfo {{ timezone_zonename }}
+  stat: path=/usr/share/zoneinfo/{{ timezone_zonename }}
+  register: target_zoneinfo
+  failed_when:
+    - target_zoneinfo.stat.md5 is not defined
+
+- name: Check localtime
+  stat: path=/etc/localtime follow=yes
+  register: target_localtime
+
+- name: Symlink /etc/localtime
+  file:
+    src:   /usr/share/zoneinfo/{{ timezone_zonename }}
+    dest:  /etc/localtime
+    state: link
+    force: yes
+  changed_when:
+    - (target_zoneinfo.stat.md5 != target_localtime.stat.md5)

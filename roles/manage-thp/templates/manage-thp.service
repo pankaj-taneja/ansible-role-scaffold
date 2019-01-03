@@ -1,0 +1,11 @@
+[Unit]
+Description=Manage Transparent Huge Pages
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo {{ manage_thp_enabled }} > /sys/kernel/mm/transparent_hugepage/enabled"
+ExecStart=/bin/sh -c "echo {{ manage_thp_defrag }} > /sys/kernel/mm/transparent_hugepage/defrag"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

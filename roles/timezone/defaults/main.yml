@@ -1,0 +1,5 @@
+---
+# defaults file for timezone
+
+## By default the timezone used is UTC
+timezone_zonename: 'UTC'

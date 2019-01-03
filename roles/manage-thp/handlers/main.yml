@@ -1,0 +1,15 @@
+---
+
+- name: restart manage-thp
+  command: /bin/true
+  notify:
+    - Manage-thp | reload systemd
+    - Manage-thp | reload manage-thp
+
+- name: Manage-thp | reload systemd
+  command: systemctl daemon-reload
+
+- name: Manage-thp | reload manage-thp
+  service:
+    name: manage-thp
+    state: restarted

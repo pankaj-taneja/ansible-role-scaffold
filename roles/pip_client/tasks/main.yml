@@ -1,0 +1,15 @@
+---
+# tasks file for pip_client
+
+- name: Populate /etc/pip.conf
+  blockinfile:
+    destfile: /etc/pip.conf
+    create: yes
+    block: |
+      [global]
+      index = {{ pip_client_index }}
+      index-url = {{ pip_client_index }}
+      timeout = 60
+      disable-pip-version-check = true
+      {% if pip_client_host is defined %}trusted-host = {{ pip_client_host }}{% endif %}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK global"

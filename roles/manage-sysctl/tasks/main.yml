@@ -1,0 +1,10 @@
+---
+
+- name: Manage sysctl
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    sysctl_set: yes
+    state: present
+  with_items:
+    "{{ manage_sysctl_values }}"

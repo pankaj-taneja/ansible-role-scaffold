@@ -1,0 +1,20 @@
+---
+
+- name: "Deploy manage thp systemd service"
+  template:
+    src: "manage-thp.service"
+    dest: "/etc/systemd/system/manage-thp.service"
+    owner: "root"
+    group: "root"
+    backup: yes
+    mode: "0644"
+  notify: restart manage-thp
+
+# reload-systemd
+- meta: flush_handlers
+
+- name: "Enable manage-thp"
+  service:
+    name: manage-thp
+    enabled: yes
+    state: started

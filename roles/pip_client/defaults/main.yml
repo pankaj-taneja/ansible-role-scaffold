@@ -1,0 +1,5 @@
+---
+# defaults file for pip_client
+#
+pip_client_host: 'artifacts.guavus.mtl'
+pip_client_index: "http://{{ pip_client_host }}/api/pypi/srx-pypi-repo.dev/simple"

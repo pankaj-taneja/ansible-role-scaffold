@@ -1,0 +1,10 @@
+---
+
+manage_sysctl_values:
+ - name: 'vm.swappiness'
+   value: '1'
+ - name: 'net.ipv4.ip_local_port_range'
+   value: '16384    65535'
+ - name: 'net.core.somaxconn'
+   value: '1024'
+

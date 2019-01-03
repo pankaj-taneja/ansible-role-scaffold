@@ -1,0 +1,8 @@
+---
+
+manage_limits_values:
+ - domain: "*"
+   type: '-'
+   name: 'nofile'
+   value: '512000'
+

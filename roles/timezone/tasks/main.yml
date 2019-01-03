@@ -1,0 +1,3 @@
+- include: config.yaml
+  when:
+    - timezone_zonename is defined
